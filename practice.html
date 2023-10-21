@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>storage methods</title>
+</head>
+
+<body>
+    <script>
+//local storage - synchronous line by line execution
+     window.localStorage.setItem("name", "vandhana"); 
+     const person =  window.localStorage.getItem("name"); //retrive a data
+     console.log(person);
+    //  localStorage.removeItem("name");
+    //  localStorage.clear();
+    //session storage
+
+    window.sessionStorage.setItem("age", "21");
+    const data = window.sessionStorage.getItem("age");
+    console.log(data);
+
+//storing only strings local storage convert arrays or objects into strings
+
+
+const personData=["name",20];
+localStorage.setItem('user', JSON.stringify(personData));
+localStorage.getItem('name');
+JSON.parse(localStorage.getItem('user'));
+const userData = JSON.parse(localStorage.getItem('user'));
+console.log(userData);
+
+
+//indexed db is an database (rdbms)   asynchronous
+
+let db;
+
+const openRequest = indexedDB.open('myDatabase', 1); //create my databse
+
+
+
+function addItem() {
+    const item = {
+        name: 'banana',
+        price: '$2.99',
+        description: 'It is a purple banana!',
+       
+    };
+    const data = db.transaction("myDatabaseStore", "readwrite");
+    const store = data.objectStore('myDatabaseStore');
+    store.add(item);
+}
+
+
+
+
+
+
+
+
+  
+
+
+
+    
+
+
+
+    </script>
+
+</body>
+
+</html>
